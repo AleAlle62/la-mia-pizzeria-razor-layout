@@ -1,8 +1,45 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    var nome = "Alessio";
+    var cognome = "Allegrini";
+    var somma = 0;
+    for (int i = 1; i <= 0; i++)
+    {
+        somma += i;
+    }
+}
+<div>
+    <h2>@nome @cognome</h2>
+    <span>@somma</span>
+</div>
+
+
+@{
+    var frase = "nel mezzo del cammin di nostra vita";
+    var conta = frase.Count(c => c == 'a');
+}
+<span>@conta</span>
+
+@{
+    var numeri = new List<int>();
+    var random = new Random();
+    for (int i = 0; i < 20; i++)
+    {
+        numeri.Add(random.Next(1, 91));
+    }
+}
+@foreach (var numero in numeri.Where(n => n >= 20 && n <= 70))
+{
+    <span>@numero</span>
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@{
+    var dataOraAttuale = DateTime.Now;
+}
+<span>@dataOraAttuale.ToString("yyyy-MM-dd HH:mm:ss")</span>
+
+@{
+    var dataOggi = DateTime.Today;
+}
+<span>@dataOggi.AddDays(-7).ToString("yyyy-MM-dd")</span>
+<span>@dataOggi.ToString("dddd")</span>
+<span>@dataOggi.AddYears(1).ToString("dddd")</span>
