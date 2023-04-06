@@ -1,6 +1,22 @@
 ﻿@{
+    Layout = null;
+}
+
+
+@{
+    //1) nome e cognome
     var nome = "Alessio";
     var cognome = "Allegrini";
+}
+<div>
+    <h2>ES 1:</h2>
+    <h2>@nome @cognome</h2>
+</div>
+
+
+
+@{
+    //2) SOMMA
     var somma = 0;
     for (int i = 1; i <= 0; i++)
     {
@@ -8,38 +24,53 @@
     }
 }
 <div>
-    <h2>@nome @cognome</h2>
-    <span>@somma</span>
+    <h2>ES 2:</h2>
+    <span>@somma</sp>
 </div>
 
 
+
 @{
+    //3) DANTE
     var frase = "nel mezzo del cammin di nostra vita";
     var conta = frase.Count(c => c == 'a');
 }
-<span>@conta</span>
+<div>
+    <h2>ES 3:</h2>
+    <span>le A sono: @conta</sp>
+</div>
+
+
 
 @{
-    var numeri = new List<int>();
+    //4) list<>
     var random = new Random();
-    for (int i = 0; i < 20; i++)
-    {
-        numeri.Add(random.Next(1, 91));
-    }
-}
-@foreach (var numero in numeri.Where(n => n >= 20 && n <= 70))
-{
-    <span>@numero</span>
+    var numbers = Enumerable.Range(1, 20).Select(i => random.Next(1, 91)).ToList();
+    var filteredNumbers = numbers.Where(n => n >= 20 && n <= 70).ToList();
 }
 
+<h2>ES 4:</h2>
+<ul>
+    @foreach (var number in filteredNumbers)
+    {
+        <li>@number</li>
+    }
+</ul>
+
+
+
 @{
+    //5) data e ora
     var dataOraAttuale = DateTime.Now;
 }
+<h2>ES 5:</h2>
 <span>@dataOraAttuale.ToString("yyyy-MM-dd HH:mm:ss")</span>
 
 @{
+    //6)
     var dataOggi = DateTime.Today;
 }
+<h2>ES 6:</h2>
 <span>@dataOggi.AddDays(-7).ToString("yyyy-MM-dd")</span>
 <span>@dataOggi.ToString("dddd")</span>
 <span>@dataOggi.AddYears(1).ToString("dddd")</span>
